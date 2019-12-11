@@ -5,6 +5,7 @@ import (
 	"strings"
 	"github.com/gocolly/colly"
 	"github.com/nlopes/slack"
+	"math/rand"
 )
 
 /*
@@ -68,42 +69,43 @@ func sendHelp(slackClient *slack.RTM, message, slackChannel string) {
 	slackClient.SendMessage(slackClient.NewOutgoingMessage(helpMessage, slackChannel))
 }
 
-// sendSkincareArticle is NOT unimplemented --- write code in the function body to complete!
-
+// sendSkincareArticle when given th keyword skincare scraps the Science Daily website for articles on skin care and returns an article to the slack channel
 func sendSkincareArticle(slackClient *slack.RTM, message, slackChannel string) {
 	command := strings.ToLower(message)
 	command = strings.TrimSpace(command)
 	println("[RECEIVED] sendSkincareArticle:", command)
 	// if strings.ToLower(command) == "skincare" {
-	println("***skincare")
+	articleMessage := "Article Link"
+	// get a random number
+	randNum := rand.Intn(30)
+	// create a counter for how many print statements you do
+	outputCounter := 0
 	// Instantiate default collector
-	c := colly.NewCollector(
-		// Visit only domains: hackerspaces.org, wiki.hackerspaces.org
-		// colly.AllowedDomains("hackerspaces.org"),
-	)
+	c := colly.NewCollector()
 
 	// On every a element which has href attribute call callback
 	c.OnHTML("h3 > a", func(e *colly.HTMLElement) {
 		link := e.Attr("href")
-		// Print link
-		// fmt.Printf("Link found: %q -> %s\n", e.Text, link)
-		// fmt.Println(e.Text)
-		// Visit link found on page
 		// Only those links are visited which are in AllowedDomains
 		c.Visit(e.Request.AbsoluteURL(link)) // 35 links
 	})
 
 	// Before making a request print "Visiting ..."
 	c.OnRequest(func(r *colly.Request) {
+		outputCounter++
 		fmt.Println("Visiting", r.URL.String())
+		if outputCounter == randNum {
+			articleMessage = r.URL.String()
+		}
 	})
 
 	// Start scraping on https://www.sciencedaily.com/news/health_medicine/skin_care/
 	c.Visit("https://www.sciencedaily.com/news/health_medicine/skin_care/")
-	// }
+	
 	
 	// if it is scrap an article from the website science daily using this link https://www.sciencedaily.com/news/health_medicine/skin_care/ so that everytime the command is received we return a new article 
 	// EXPECTED OUTPUT - articleMessage := "https://www.sciencedaily.com/releases/2019/08/190815140834.htm"
-	articleMessage := "https://www.sciencedaily.com/releases/2019/08/190815140834.htm"
+	
 	slackClient.SendMessage(slackClient.NewOutgoingMessage(articleMessage, slackChannel))
+	// }
 }
