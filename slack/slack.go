@@ -3,7 +3,7 @@ package slack
 import (
 	"fmt"
 	"strings"
-
+	"github.com/gocolly/colly"
 	"github.com/nlopes/slack"
 )
 
@@ -49,7 +49,7 @@ func RespondToEvents(slackClient *slack.RTM) {
 
 			// START SLACKBOT CUSTOM CODE
 			// ===============================================================
-			sendResponse(slackClient, message, ev.Channel)
+			sendSkincareArticle(slackClient, message, ev.Channel)
 			sendHelp(slackClient, message, ev.Channel)
 			
 			// ===============================================================
@@ -68,14 +68,42 @@ func sendHelp(slackClient *slack.RTM, message, slackChannel string) {
 	slackClient.SendMessage(slackClient.NewOutgoingMessage(helpMessage, slackChannel))
 }
 
-// sendResponse is NOT unimplemented --- write code in the function body to complete!
+// sendSkincareArticle is NOT unimplemented --- write code in the function body to complete!
 
-func sendResponse(slackClient *slack.RTM, message, slackChannel string) {
+func sendSkincareArticle(slackClient *slack.RTM, message, slackChannel string) {
 	command := strings.ToLower(message)
-	println("[RECEIVED] sendResponse:", command)
-	// TODO:
-	//      1. Implement sendResponse for one or more of your custom Slackbot commands.
-	//         You could call an external API here, or create your own string response. Anything goes!
-	//      2. STRETCH: Write a goroutine that calls an external API based on the data received in this function.
+	command = strings.TrimSpace(command)
+	println("[RECEIVED] sendSkincareArticle:", command)
+	// if strings.ToLower(command) == "skincare" {
+	println("***skincare")
+	// Instantiate default collector
+	c := colly.NewCollector(
+		// Visit only domains: hackerspaces.org, wiki.hackerspaces.org
+		// colly.AllowedDomains("hackerspaces.org"),
+	)
+
+	// On every a element which has href attribute call callback
+	c.OnHTML("h3 > a", func(e *colly.HTMLElement) {
+		link := e.Attr("href")
+		// Print link
+		// fmt.Printf("Link found: %q -> %s\n", e.Text, link)
+		// fmt.Println(e.Text)
+		// Visit link found on page
+		// Only those links are visited which are in AllowedDomains
+		c.Visit(e.Request.AbsoluteURL(link)) // 35 links
+	})
+
+	// Before making a request print "Visiting ..."
+	c.OnRequest(func(r *colly.Request) {
+		fmt.Println("Visiting", r.URL.String())
+	})
+
+	// Start scraping on https://www.sciencedaily.com/news/health_medicine/skin_care/
+	c.Visit("https://www.sciencedaily.com/news/health_medicine/skin_care/")
+	// }
 	
+	// if it is scrap an article from the website science daily using this link https://www.sciencedaily.com/news/health_medicine/skin_care/ so that everytime the command is received we return a new article 
+	// EXPECTED OUTPUT - articleMessage := "https://www.sciencedaily.com/releases/2019/08/190815140834.htm"
+	articleMessage := "https://www.sciencedaily.com/releases/2019/08/190815140834.htm"
+	slackClient.SendMessage(slackClient.NewOutgoingMessage(articleMessage, slackChannel))
 }
