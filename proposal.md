@@ -1,7 +1,7 @@
 # Project Proposal
 
 ### Problem
-It can be pain stakingly time comsuming to find truthy articles o skin care. So the @sciencedaily bot when given the keyward skincare will give you a truthy article on just that.
+It can be very time comsuming to find truthy articles on skin care. So the @sciencedaily bot when given the keyward skincare will give you a truthy article on just that.
 
 ### Goals
 My goal is to make getting truthy articles on skin care easier for everyone.
