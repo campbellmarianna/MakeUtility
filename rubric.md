@@ -55,7 +55,7 @@ Your boss will be looking for it in a **file named `proposal.md`**.
 
 | Student Name      | Total<br>(Possible) | Bonus<br>(Possible) | Total<br>(Earned) | Bonus<br>(Earned) | Final Score<br>(Points) | Final % |
 | ----------------- | :-----------------: | :-----------------: | :---------------: | :---------------: | :---------------------: | :-----: |
-| ____________________ |       **200**       |        **50**       |                   |                   |                         |         |
+| _Marianna Campbell_ |       **200**       |        **50**       |                   |                   |                         |         |
 
 |       Phase |  ✓  | Criteria                                                                            | Points | Score |
 | ----------: | :-: | ----------------------------------------------------------------------------------- | :----: | :---: |
