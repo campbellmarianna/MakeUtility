@@ -70,7 +70,7 @@ Your boss will be looking for it in a **file named `proposal.md`**.
 | _Implement_ |  ✓  | Properly Defined `.gitignore`                                                       |  **5** |       |
 | _Implement_ |  ✓  | Attribution Links in Comments for "Borrowed" Code                                   |  **5** |       |
 |    _Deploy_ |  ✓  | Shipped Live & Fully Usable                                                         | **30** |       |
-|  _Document_ |     | Installation & How to Use Documentation in `README`                                 | **15** |       |
+|  _Document_ |  ✓  | Installation & How to Use Documentation in `README`                                 | **15** |       |
 |             |     | &nbsp;                                                                              |        |       |
 |     _Bonus_ |     | 🌟 Add API Key Authentication to Your API                                           | **5**  |       |
 |     _Bonus_ |     | 🌟 Documentation Website, Link in `README` & Repo Header                            | **5**  |       |
