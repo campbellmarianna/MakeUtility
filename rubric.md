@@ -59,17 +59,17 @@ Your boss will be looking for it in a **file named `proposal.md`**.
 
 |       Phase |  ✓  | Criteria                                                                            | Points | Score |
 | ----------: | :-: | ----------------------------------------------------------------------------------- | :----: | :---: |
-|   _Propose_ |     | Repo Contents Matchgit Written Proposal                             | **15** |       |
-|   _Propose_ |     | Utility Has Purpose & Fulfills the Proposal                                         | **15** |       |
-| _Implement_ |     | Source Code Receives a B or Higher on [Go Report Card](https://goreportcard.com)    | **50** |       |
-| _Implement_ |     | Utility Can Persist Data                                                            | **25** |       |
-| _Implement_ |     | Utility Incorporates a Third-Party API                                              | **25** |       |
+|   _Propose_ |  ✓  | Repo Contents Matchgit Written Proposal                             | **15** |       |
+|   _Propose_ |  ✓  | Utility Has Purpose & Fulfills the Proposal                                         | **15** |       |
+| _Implement_ |  ✓  | Source Code Receives a B or Higher on [Go Report Card](https://goreportcard.com)    | **50** |       |
+| _Implement_ |  ✓  | Utility Can Persist Data                                                            | **25** |       |
+| _Implement_ |  ✓  | Utility Incorporates a Third-Party API                                              | **25** |       |
 | _Implement_ | ✓  | `README` Contains [Go Report Card](https://goreportcard.com) Badge at Top           |  **5** |       |
 | _Implement_ |  ✓  | Source Code in Public GitHub Repo & Added to [Tracker](https://make.sc/trackbew2.5) |  **5** |       |
 | _Implement_ |  ✓  | No Exposed Secrets in Source Code                                                   |  **5** |       |
-| _Implement_ |     | Properly Defined `.gitignore`                                                       |  **5** |       |
-| _Implement_ |     | Attribution Links in Comments for "Borrowed" Code                                   |  **5** |       |
-|    _Deploy_ |     | Shipped Live & Fully Usable                                                         | **30** |       |
+| _Implement_ |  ✓  | Properly Defined `.gitignore`                                                       |  **5** |       |
+| _Implement_ |  ✓  | Attribution Links in Comments for "Borrowed" Code                                   |  **5** |       |
+|    _Deploy_ |  ✓  | Shipped Live & Fully Usable                                                         | **30** |       |
 |  _Document_ |     | Installation & How to Use Documentation in `README`                                 | **15** |       |
 |             |     | &nbsp;                                                                              |        |       |
 |     _Bonus_ |     | 🌟 Add API Key Authentication to Your API                                           | **5**  |       |
