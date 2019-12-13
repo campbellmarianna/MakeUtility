@@ -61,7 +61,31 @@ func sendSkincareArticle(slackClient *slack.RTM, message, slackChannel string) {
 	command := strings.ToLower(message)
 	command = strings.TrimSpace(command)
 	println("[RECEIVED] sendSkincareArticle:", command)
-	slackClient.SendMessage(slackClient.NewOutgoingMessage(message, slackChannel))
+	if strings.ToLower(command) == "skincare" {
+		articleMessage := "Article Link"
+		// get a random number
+		randNum := rand.Intn(30)
+		// create a counter for how many print statements you do
+		outputCounter := 0
+		// Instantiate default collector
+		c := colly.NewCollector()
+		// On every a element which has href attribute call callback
+		c.OnHTML("h3 > a", func(e *colly.HTMLElement) {
+			link := e.Attr("href")
+			// Only those links are visited which are in AllowedDomains
+			c.Visit(e.Request.AbsoluteURL(link)) // 35 links
+		})
+		// Before making a request print "Visiting ..."
+		c.OnRequest(func(r *colly.Request) {
+			outputCounter++
+			if outputCounter == randNum {
+				articleMessage = r.URL.String()
+			}
+		})
+		// Start scraping on https://www.sciencedaily.com/news/health_medicine/skin_care/
+		c.Visit("https://www.sciencedaily.com/news/health_medicine/skin_care/")
+
+		slackClient.SendMessage(slackClient.NewOutgoingMessage(articleMessage, slackChannel))
 	}
 }
 
