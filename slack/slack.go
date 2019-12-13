@@ -2,10 +2,10 @@ package slack
 
 import (
 	"fmt"
-	"strings"
 	"github.com/gocolly/colly"
 	"github.com/nlopes/slack"
 	"math/rand"
+	"strings"
 )
 
 /*
@@ -87,7 +87,8 @@ func sendSkincareArticle(slackClient *slack.RTM, message, slackChannel string) {
 
 		// Start scraping on https://www.sciencedaily.com/news/health_medicine/skin_care/
 		c.Visit("https://www.sciencedaily.com/news/health_medicine/skin_care/")
-		
+
 		slackClient.SendMessage(slackClient.NewOutgoingMessage(articleMessage, slackChannel))
 	}
 }
+

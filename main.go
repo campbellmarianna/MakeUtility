@@ -2,8 +2,8 @@
 package main
 
 import (
-	"os"
 	"net/http"
+	"os"
 
 	"github.com/droxey/goslackit/slack"
 	_ "github.com/joho/godotenv/autoload"
@@ -22,3 +22,4 @@ func slackIt() {
 	slackClient := slack.CreateSlackClient(botToken)
 	slack.RespondToEvents(slackClient)
 }
+
