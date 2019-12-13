@@ -22,4 +22,3 @@ func slackIt() {
 	slackClient := slack.CreateSlackClient(botToken)
 	slack.RespondToEvents(slackClient)
 }
-

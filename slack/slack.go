@@ -2,10 +2,11 @@ package slack
 
 import (
 	"fmt"
-	"github.com/gocolly/colly"
-	"github.com/nlopes/slack"
 	"math/rand"
 	"strings"
+
+	"github.com/gocolly/colly"
+	"github.com/nlopes/slack"
 )
 
 /*
@@ -88,4 +89,3 @@ func sendSkincareArticle(slackClient *slack.RTM, message, slackChannel string) {
 		slackClient.SendMessage(slackClient.NewOutgoingMessage(articleMessage, slackChannel))
 	}
 }
-
