@@ -6,7 +6,7 @@
 A slack bot written in [Go](https://golang.org/) and built with technologies such as [Colly](http://go-colly.org/) and the [Slack API](https://api.slack.com/).
 
 ### Problem
-It can be very time comsuming to find truthy articles on skin care. So the @sciencedaily bot when given the keyward skincare will give you a truthy article on just that.
+It can be very time consuming to find science-based articles on skincare. So the @sciencedaily bot when given the keyward skincare will give you a truthy article on just that.
 
 ![bot example](images/slackbotDark.png)
 
